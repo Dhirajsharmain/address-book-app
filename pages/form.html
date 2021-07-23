@@ -25,7 +25,7 @@
     <!-- header ended -->
 
     <div class="main-content">
-        <div class="form-content">
+        <form action="#" class="form" onreset="resetForm()" onsubmit="save()">
 
             <div class="form-header">
                 <div class="heading">
@@ -37,9 +37,48 @@
             </div>
 
             <div class="form-body">
-                form body
+
+                <div class="row-content">
+                    <label class="label text" for="name">Name</label>
+                    <input class="input" type="text" name="name" id="name" placeholder="Your name.." required>
+                    <error-output class="text-error" for="text"></error-output>
+                </div>
+
+                <div class="row-content">
+                    <label class="label text" for="phone">Phone</label>
+                    <input class="input" type="text" name="phone" id="phone" placeholder="Your phone number.." required>
+                    <error-output class="text-error" for="phone"></error-output>
+                </div>
+
+                <div class="row-content">
+                    <label for="address" class="label text">Address</label>
+                    <textarea class="input" name="address" id="address" style="height: 100px;"
+                        placeholder="Your address.."></textarea>
+                </div>
+
+                <div class="row-content">
+                    <div class="subRow-content">
+                        <div>
+                            <label for="city" class="label text">City</label>
+                            <select name="city" id="city">
+                                <option value="">city name .. </option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="state" class="label text">State</label>
+                            <select name="state" id="state">
+                                <option value="">state name ..</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="zipCode" class="label text">Zip Code</label>
+                            <input class="input" type="text" name="zipCode" id="zipCode" placeholder="zip.." required>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </form>
     </div>
 </body>
 

@@ -59,14 +59,23 @@ header{
     color: var(--secondary);
 }
 
+/* header ended here */
+
 .main-content{
+    margin: 2rem 0;
+    min-height: calc(100% - 80px);
     display: flex;
     justify-content: center;
-    margin: 2rem 0;
 }
 
-.form-content{
+.form {
     width: 65%;
+    margin: 15px 0;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #F5F5F5;
 }
 
 .form-header{
@@ -75,9 +84,10 @@ header{
     padding: 2rem;
     background: var(--primary) 0% 0% no-repeat padding-box;
     opacity: 1;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    outline: none;
+    border: none;
 }
 
 .form-header .heading{
@@ -97,7 +107,70 @@ header{
 }
 
 .form-body{
-    border: 1px solid var(--primary);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
+
+.row-content {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    align-items: center;
+    width: 70%;
+}
+
+.subRow-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    min-width: 100%;
+}
+
+label {
+    padding: 10px 0px;
+    display: inline-block;
+}
+
+.text {
+    font-size: 16px;
+    color: #42515f;
+    opacity: 1;
+    font-family: Roboto;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+error-output{
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
+select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font: normal normal normal 16px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    background-color: transparent;
+}
+
+
 
 

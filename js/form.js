@@ -44,20 +44,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
     setStatesInnerHtml();
 })
 
+
 function save(event) {
     createAddressBook();
 }
+
 
 const createAddressBook = () => {
     let addressBook = new AddressBook();
     try {
         addressBook.name = getInputValueById('#name');
+        addressBook.phone = getInputValueById('#phone');
+        addressBook.address = getInputValueById('#address');
     } catch (e) {
         setTextalue('.text-error', e);
         throw e;
     }
-    addressBook.phone = getInputValueById('#phone');
-    addressBook.address = getInputValueById('#address');
     addressBook.city = getInputValueById('#city');
     addressBook.state = getInputValueById('#state');
     addressBook.zip = getInputValueById('#zipCode');

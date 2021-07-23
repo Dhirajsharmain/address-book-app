@@ -9,7 +9,7 @@ const checkPhone = (phone) => {
 }
 
 const checkAddress = (address) => {
-    const addressRegex = RegExp('');
+    const addressRegex = RegExp(''); //([A-Za-z]{2,})\w+
     if (!addressRegex.test(address)) throw 'Address is Incorrect'
 }
 

@@ -40,5 +40,49 @@ window.addEventListener('DOMContentLoaded', (event) => {
             setTextValues('.address-error', e);
         }
     });
-    
+
+    setStatesInnerHtml();
 })
+
+function save(event) {
+    createAddressBook();
+}
+
+const createAddressBook = () => {
+    let addressBook = new AddressBook();
+    try {
+        addressBook.name = getInputValueById('#name');
+    } catch (e) {
+        setTextalue('.text-error', e);
+        throw e;
+    }
+    addressBook.phone = getInputValueById('#phone');
+    addressBook.address = getInputValueById('#address');
+    addressBook.city = getInputValueById('#city');
+    addressBook.state = getInputValueById('#state');
+    addressBook.zip = getInputValueById('#zipCode');
+    addressBook.id = new Date().getTime()
+    alert(addressBook.toString());
+    return addressBook;
+}
+
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+
+const setStatesInnerHtml = () => {
+    if (stateList.length == 0) return;
+    var select = document.getElementById("state");
+    for (const stateValue of stateList) {
+        innerHtml = `<option value="${stateValue}">${stateValue}</option>`;
+        select.innerHTML = select.innerHTML + `<option value="${stateValue}">${stateValue}</option>`;
+    }
+}
+
+let stateList = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir",
+                "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra","Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha",
+                "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal",
+                "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"]

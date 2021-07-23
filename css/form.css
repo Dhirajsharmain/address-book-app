@@ -124,10 +124,13 @@ header{
 .subRow-content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.subRow-content > div {
+    margin-right: 5px;
 }
 
 .label {

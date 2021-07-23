@@ -60,14 +60,18 @@
                     <div class="subRow-content">
                         <div>
                             <label for="city" class="label text">City</label>
-                            <select name="city" id="city">
-                                <option value="">city name .. </option>
+                            <select name="City" id="city">
+                                <option value="" disabled selected>Please choose one</option>
+                                <option value="Hisar">Hisar</option>
+                                <option value="Gurugram">Gurugram</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Mumbai">Mumbai</option>
                             </select>
                         </div>
                         <div>
-                            <label for="state" class="label text">State</label>
+                            <label for="State" class="label text">State</label>
                             <select name="state" id="state">
-                                <option value="">state name ..</option>
+                                <option value="" disabled selected>Please choose one</option>
                             </select>
                         </div>
                         <div>
@@ -87,6 +91,7 @@
     </div>
     <script src="../js/form.js"></script>
     <script src="../js/utility.js"></script>
+    <script src="../js/addressbook.js"></script>
 </body>
 
 </html>

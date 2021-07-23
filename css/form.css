@@ -40,12 +40,12 @@ header{
 }
 
 .logo-content img{
-    width: 50px;
-    height: 50px;
+    width: 43px;
+    height: 43px;
 
 }
 
-.emp-text{
+.logo-text{
     display: block;
     font: normal bold 20px/25px Montserrat;
     font-family: "Montserrat", sans-serif;
@@ -55,7 +55,7 @@ header{
     text-transform: capitalize;
 }
 
-.emp-payroll{
+.logo-book{
     color: #12515f;
 }
 

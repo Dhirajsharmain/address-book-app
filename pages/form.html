@@ -46,14 +46,14 @@
 
                 <div class="row-content">
                     <label class="label text" for="phone">Phone</label>
-                    <input class="input" type="text" name="phone" id="phone" placeholder="Your phone number.." required>
-                    <error-output class="text-error" for="phone"></error-output>
+                    <input class="input" type="text" name="phone" id="phone" placeholder="91 xxx xxxx xxx.." required>
+                    <error-output class="phone-error" for="phone"></error-output>
                 </div>
 
                 <div class="row-content">
                     <label for="address" class="label text">Address</label>
-                    <textarea class="input" name="address" id="address" style="height: 100px;"
-                        placeholder="Your address.."></textarea>
+                    <textarea class="input" name="address" id="address" style="height: 100px;" placeholder="Your address.."></textarea>
+                    <error-output class="address-error" for="address"></error-output>
                 </div>
 
                 <div class="row-content">
@@ -80,6 +80,8 @@
             </div>
         </form>
     </div>
+    <script src="../js/form.js"></script>
+    <script src="../js/utility.js"></script>
 </body>
 
 </html>

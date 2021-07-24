@@ -63,7 +63,10 @@ function createAndUpdateStorage(addressBook) {
     location.href = '../pages/home.html';
 }
 
-
+/**
+ * creating address book data object
+ * @returns : object
+ */
 const createAddressBook = () => {
     let addressBook = new AddressBook();
     try {

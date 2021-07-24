@@ -9,11 +9,18 @@ const checkPhone = (phone) => {
 }
 
 const checkAddress = (address) => {
-    const addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$'); //^[A-Za-z0-9\\,\\s]{3,}?$
+    const addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$');
     if (!addressRegex.test(address)) throw 'Address is Incorrect'
 }
 
 const setTextValues = (id, value) => {
     const element = document.querySelector(id);
     element.textContent = value;
+}
+
+const update = (node) => {
+    // let addressBookData = addressBookList.find(personData => personData._id == node.id);
+    // if (!addressBookData) return;
+    // localStorage.setItem('editContact', JSON.stringify(addressBookData));
+    window.location.replace(site_properties.add_address_book_page + "?id=" + node.id);
 }

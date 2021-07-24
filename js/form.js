@@ -47,23 +47,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 function save(event) {
     createAddressBook();
+    let addressBook = createAddressBook();
+    createAndUpdateStorage(addressBook);
+}
+
+
+function createAndUpdateStorage(addressBook) {
+    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
+    if (addressBookList != undefined) {
+        addressBookList.push(addressBook);
+    } else {
+        addressBookList = [addressBook]
+    }
+    alert(addressBookList.toString());
+    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
+    location.href = '../pages/home.html';
 }
 
 
 const createAddressBook = () => {
     let addressBook = new AddressBook();
     try {
-        addressBook.name = getInputValueById('#name');
-        addressBook.phone = getInputValueById('#phone');
-        addressBook.address = getInputValueById('#address');
+        addressBook._name = getInputValueById('#name');
+        addressBook._phone = getInputValueById('#phone');
+        addressBook._address = getInputValueById('#address');
     } catch (e) {
         setTextalue('.text-error', e);
         throw e;
     }
-    addressBook.city = getInputValueById('#city');
-    addressBook.state = getInputValueById('#state');
-    addressBook.zip = getInputValueById('#zipCode');
-    addressBook.id = new Date().getTime()
+    addressBook._city = getInputValueById('#city');
+    addressBook._state = getInputValueById('#state');
+    addressBook._zip = getInputValueById('#zipCode');
+    addressBook._id = new Date().getTime()
     alert(addressBook.toString());
     return addressBook;
 }

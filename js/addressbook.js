@@ -20,7 +20,7 @@ class AddressBook {
     }
 
     set address(address) {
-        let addressRegex = RegExp('');  //([A-Za-z]{2,})\w+
+        let addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$');  //^[A-Za-z0-9\\,\\s]{3,}?$
         if (addressRegex.test(address))
             this._address = address;
         else throw 'Address is Incorrect'

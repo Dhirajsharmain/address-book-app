@@ -4,12 +4,12 @@ const checkName = (name) => {
 }
 
 const checkPhone = (phone) => {
-    const phoneRegex = RegExp('');  //^(\+91)?[0]?(91)?[0-9]\d{10,13}$
+    const phoneRegex = RegExp('');  //\b\d{3}[-.]?\d{3}[-.]?\d{4}\b
     if (!phoneRegex.test(phone)) throw 'Phone number is Incorrect'
 }
 
 const checkAddress = (address) => {
-    const addressRegex = RegExp(''); //([A-Za-z]{2,})\w+
+    const addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$'); //^[A-Za-z0-9\\,\\s]{3,}?$
     if (!addressRegex.test(address)) throw 'Address is Incorrect'
 }
 

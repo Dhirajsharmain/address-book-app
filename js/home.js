@@ -51,3 +51,13 @@ const createInnerHtml = () => {
     }
     document.querySelector('#table-display').innerHTML = innerHtml;
 }
+
+const remove = (node) => {
+    addressBookList = addressBookList.filter(person => person._id != node.id);
+    storeDataToLocalStorage();
+    processAddressBookDataResponse();
+}
+
+const storeDataToLocalStorage = () => {
+    localStorage.setItem('AddressBookList', JSON.stringify(addressBookList));
+}

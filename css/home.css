@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:  Roboto;
+    font-family: 'Lato', sans-serif;
 }
 
 :root {
@@ -16,7 +16,7 @@
 body{
     margin: 0;
     height: 100%;
-    /* background: rgba(241, 238, 238, 0.8); */
+    font-family: 'Lato', sans-serif;
 }
 
 header{
@@ -66,7 +66,7 @@ header{
     flex-direction: row;
 }
 .add-button {
-    font: normal normal normal 22px/29px Roboto;
+    font: normal normal normal 22px/29px lato;
     font-size: 16px;
     letter-spacing: 0px;
     color: #fff;
@@ -85,7 +85,7 @@ header{
 
 .searchBtn{
     background-color: #fff;
-    font: normal normal normal 22px/29px Roboto;
+    font: normal normal normal 22px/29px lato;
     opacity: 1;
     border: none;
     border-radius: 50px;
@@ -114,14 +114,14 @@ header{
     padding-bottom: 25px;
 }
 
-.emp-detail-text {
-    font: normal normal bold 24px/25px Roboto;
+.person-detail-text {
+    font: normal normal bold 24px/25px lato;
     letter-spacing: 0px;
     color: #42515f;
     opacity: 1;
 }
 
-.emp-count {
+.person-count {
     background-color: var(--primary);
     color: #ffffff;
     border-radius: 30%;
@@ -131,4 +131,50 @@ header{
     width: 26px;
     text-align: center;
     display: inline-block;
+}
+
+/* UC3 */
+
+.table-main {
+    width: 80%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    min-width: 800px;
+}
+
+th {
+    text-align: left;
+    font: normal normal medium 18px/24px lato;
+    letter-spacing: 0px;
+    color: var(--gray);
+    text-transform: capitalize;
+    opacity: 1;
+    border: 0px solid #dddddd;
+    padding: 2px 8px;
+}
+
+tr:not(:first-child) {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+}
+
+td {
+    font: normal normal nornal 14px/21px lato;
+    letter-spacing: 0px;
+    color: #3d3d3d;
+    opacity: 1;
+    padding: 10px 8px;
+}
+
+td:first-child {
+    display: flex;
+    align-items: center;
 }

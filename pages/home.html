@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Home | Address Book App</title>
 </head>
+
 <body>
     <!-- header starts here -->
     <header class="header-content header">
@@ -23,15 +31,42 @@
     <!-- Section2 UC2 -->
     <div class="main-content">
         <div class="header-content">
-            <div class="emp-detail-text">
-                Person Details <div class="emp-count">10</div>
+            <div class="person-detail-text">
+                Person Details <div class="person-count">10</div>
             </div>
             <div class="header-button">
                 <button class="searchBtn"><img src="../assets/icons/search.svg" alt="search"></button>
-                <a href="../pages/form.html" class="add-button"><img src="../assets/icons/add-24px.svg"
-                        alt="">Add user</a>
+                <a href="../pages/form.html" class="add-button"><img src="../assets/icons/add-24px.svg" alt="">Add
+                    user</a>
             </div>
         </div>
+
+        <table id="table-display" class="table">
+            <!-- UC3 -->
+            <tr>
+                <th>Fullname</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Narayan Mahadevan</td>
+                <td>H no.101n street no, xyz colony,</td>
+                <td>Hisar</td>
+                <td>Haryana</td>
+                <td>125555</td>
+                <td>+91 8952120215</td>
+                <td>
+                    <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
+                </td>
+            </tr>
+        </table>
     </div>
+    <script src="../js/home.js"></script>
 </body>
+
 </html>

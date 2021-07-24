@@ -19,8 +19,5 @@ const setTextValues = (id, value) => {
 }
 
 const update = (node) => {
-    // let addressBookData = addressBookList.find(personData => personData._id == node.id);
-    // if (!addressBookData) return;
-    // localStorage.setItem('editContact', JSON.stringify(addressBookData));
     window.location.replace(site_properties.add_address_book_page + "?id=" + node.id);
 }

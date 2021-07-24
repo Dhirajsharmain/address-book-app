@@ -50,15 +50,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 function save(event) {
-    // let addressBook = createAddressBook();
-    // createAndUpdateStorage(addressBook);
     event.preventDefault;
     event.stopPropagation;
     try {
-        setEmployeePayrollObject();
+        setAddressBookObject();
         createAndUpdateStorage();
         resetForm();
-        window.location.replace(site_properties.home_page);
+        // location.href = site_properties.home_page;
     } catch (e) {
         console.log(e);
         return;
@@ -73,11 +71,11 @@ function createAndUpdateStorage(addressBook) {
         find(personData => personData._id == addressBookObj._id);
 
         if (!addressBookData) {
-            employeePayrollList.push(createAddressBookData());
+            addressBookList.push(createAddressBookData());
         } else {
             const index = addressBookList
                 .map(personData => personData._id)
-                .indexOf(empPayrollData._id);
+                .indexOf(addressBookData._id);
 
             addressBookList.splice(index, 1, createAddressBookData(addressBookData._id));
         }
@@ -87,30 +85,31 @@ function createAndUpdateStorage(addressBook) {
     }
 
     alert(addressBookList.toString());
-    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
+    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
+    window.location.replace('/pages/home.html');
 }
 
 const createAddressBookData = (id) => {
     let addressBook = new AddressBook();
-    if (!id) addressBook.id = createNewEmployeeId();
-    else addressBooka.id = id;
+    if (!id) addressBook.id = createNewContactId();
+    else addressBook.id = id;
     setAddressBookData(addressBook);
     return addressBook;
 }
 
 const setAddressBookData = (addressBook) => {
     try {
-        addressBook.name = employeePayrollObj._name;
+        addressBook.name = addressBookObj._name;
     } catch (e) {
         setTextValues('.text-error', e)
         throw e;
     }
 
-    addressBook.address = employeePayrollObj._address;
-    addressBook.city = employeePayrollObj._city;
-    addressBook.state = employeePayrollObj._state;
-    addressBook.zip = employeePayrollObj._zip;
-    addressBook.phone = employeePayrollObj._phone;
+    addressBook.address = addressBookObj._address;
+    addressBook.city = addressBookObj._city;
+    addressBook.state = addressBookObj._state;
+    addressBook.zip = addressBookObj._zip;
+    addressBook.phone = addressBookObj._phone;
 }
 
 const createAddressBook = () => {
@@ -170,11 +169,9 @@ let stateList = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chha
 const checkForUpdate = () => {
     const contactId = new URLSearchParams(window.location.search).get('id');
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
-    // const employeePayrollJson = localStorage.getItem('editContact');
     const addressBookJson = addressBookList.find(personData => personData._id == contactId);
     isUpdate = addressBookJson ? true : false;
     if (!isUpdate) return;
-    // addressBookObj = JSON.parse(employeePayrollJson);
     addressBookObj = addressBookJson;
     setForm();
 }

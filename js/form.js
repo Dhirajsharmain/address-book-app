@@ -46,7 +46,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 function save(event) {
-    createAddressBook();
     let addressBook = createAddressBook();
     createAndUpdateStorage(addressBook);
 }
@@ -61,7 +60,7 @@ function createAndUpdateStorage(addressBook) {
     }
     alert(addressBookList.toString());
     localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
-    window.location.href = 'home.html';
+    location.href = '../pages/home.html';
 }
 
 
@@ -87,6 +86,20 @@ const createAddressBook = () => {
 const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
     return value;
+}
+
+const resetForm = () => {
+    setValues('#name', '');
+    setValues('#phone', '');
+    setValues('#address', '');
+    setValues('#city', '');
+    setValues('#state', '');
+    setValues('#zipCode', '');
+}
+
+const setValues = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
 }
 
 

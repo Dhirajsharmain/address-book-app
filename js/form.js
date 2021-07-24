@@ -61,7 +61,7 @@ function createAndUpdateStorage(addressBook) {
     }
     alert(addressBookList.toString());
     localStorage.setItem("AddressBookList", JSON.stringify(addressBookList))
-    location.href = '../pages/home.html';
+    window.location.href = 'home.html';
 }
 
 

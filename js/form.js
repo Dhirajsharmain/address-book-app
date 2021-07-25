@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
     setStatesInnerHtml();
-    checkForUpdate();
+    // checkForUpdate();
 })
 
 
@@ -54,9 +54,19 @@ function save(event) {
     event.stopPropagation;
     try {
         setAddressBookObject();
-        createAndUpdateStorage();
+        if(site_properties.use_local_storage.match("true")){
+            createAndUpdateStorage();
+        }else {
+            makeServiceCall("POST", site_properties.server_url, true, addressBookObj)
+            .then(responseText => {
+                console.log("New Contact Added:" + responseText);
+                location.href = '../pages/home.html';
+            })
+            .catch(error => {
+                console.log(`${methodType} Error status:` + JSON.stringify(error));
+            });
+        }
         resetForm();
-        // location.href = site_properties.home_page;
     } catch (e) {
         console.log(e);
         return;
@@ -64,7 +74,7 @@ function save(event) {
 }
 
 
-function createAndUpdateStorage(addressBook) {
+function createAndUpdateStorage() {
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
     if (addressBookList) {
         let addressBookData = addressBookList.
@@ -110,24 +120,6 @@ const setAddressBookData = (addressBook) => {
     addressBook.state = addressBookObj._state;
     addressBook.zip = addressBookObj._zip;
     addressBook.phone = addressBookObj._phone;
-}
-
-const createAddressBook = () => {
-    let addressBook = new AddressBook();
-    try {
-        addressBook._name = getInputValueById('#name');
-        addressBook._phone = getInputValueById('#phone');
-        addressBook._address = getInputValueById('#address');
-    } catch (e) {
-        setTextalue('.text-error', e);
-        throw e;
-    }
-    addressBook._city = getInputValueById('#city');
-    addressBook._state = getInputValueById('#state');
-    addressBook._zip = getInputValueById('#zipCode');
-    addressBook.id = new Date().getTime()
-    alert(addressBook.toString());
-    return addressBook;
 }
 
 

@@ -1,12 +1,6 @@
 class AddressBook {
 
-    get id() {
-        return this._id;
-    }
-
-    set id(id) {
-        this._id = id;
-    }
+    id;
 
     set name(name) {
         let nameRegex = RegExp('^[A-Z]{1}[a-zA-z\\s]{2,}$');
@@ -20,7 +14,7 @@ class AddressBook {
     }
 
     set address(address) {
-        let addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$');  //^[A-Za-z0-9\\,\\s]{3,}?$
+        let addressRegex = RegExp('^[A-Za-z0-9\\,\\s]{3,}?$');
         if (addressRegex.test(address))
             this._address = address;
         else throw 'Address is Incorrect'
@@ -69,7 +63,7 @@ class AddressBook {
 
 
     toString() {
-        return "id=" + this._id + 
+        return "id=" + this.id + 
         ", name=" + this._name + 
         ", address=" + this._address + 
         ", city=" + this._city + 

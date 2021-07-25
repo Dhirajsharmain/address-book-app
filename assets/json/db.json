@@ -1,0 +1,28 @@
+{
+  "addressBook": [
+    {
+      "name": "Rajat kumar",
+      "address": "flat no xyz, sector xyz",
+      "city": "Hisar",
+      "state": "Haryana",
+      "zip": "996331",
+      "phone": "91 5654232353"
+    },
+    {
+      "name": "Mohit Garg",
+      "address": "flat no xyz, sector xyz",
+      "city": "Gurugram",
+      "state": "Haryana",
+      "zip": "996331",
+      "phone": "91 5654232353"
+    },
+    {
+      "name": "Prateek kumar",
+      "address": "flat no xyz, sector xyz",
+      "city": "Gurugram",
+      "state": "Haryana",
+      "zip": "996331",
+      "phone": "91 5654232353"
+    }
+  ]
+}

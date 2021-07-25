@@ -68,16 +68,16 @@ function createAndUpdateStorage(addressBook) {
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
     if (addressBookList) {
         let addressBookData = addressBookList.
-        find(personData => personData._id == addressBookObj._id);
+        find(personData => personData.id == addressBookObj.id);
 
         if (!addressBookData) {
             addressBookList.push(createAddressBookData());
         } else {
             const index = addressBookList
-                .map(personData => personData._id)
-                .indexOf(addressBookData._id);
+                .map(personData => personData.id)
+                .indexOf(addressBookData.id);
 
-            addressBookList.splice(index, 1, createAddressBookData(addressBookData._id));
+            addressBookList.splice(index, 1, createAddressBookData(addressBookData.id));
         }
 
     } else {
@@ -125,7 +125,7 @@ const createAddressBook = () => {
     addressBook._city = getInputValueById('#city');
     addressBook._state = getInputValueById('#state');
     addressBook._zip = getInputValueById('#zipCode');
-    addressBook._id = new Date().getTime()
+    addressBook.id = new Date().getTime()
     alert(addressBook.toString());
     return addressBook;
 }
@@ -169,7 +169,7 @@ let stateList = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chha
 const checkForUpdate = () => {
     const contactId = new URLSearchParams(window.location.search).get('id');
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
-    const addressBookJson = addressBookList.find(personData => personData._id == contactId);
+    const addressBookJson = addressBookList.find(personData => personData.id == contactId);
     isUpdate = addressBookJson ? true : false;
     if (!isUpdate) return;
     addressBookObj = addressBookJson;
@@ -186,6 +186,9 @@ const setForm = () => {
 }
 
 const setAddressBookObject = () => {
+    if (!isUpdate && site_properties.use_local_storage.match("true")) {
+        addressBookObj.id = createNewContactId();
+    }
     addressBookObj._name = getInputValueById('#name');
     addressBookObj._address = getInputValueById('#address');
     addressBookObj._city = getInputValueById('#city');
@@ -193,3 +196,10 @@ const setAddressBookObject = () => {
     addressBookObj._zip = getInputValueById('#zipCode');
     addressBookObj._phone = getInputValueById('#phone');
 }
+
+const createNewContactId = () => {
+    let conID = localStorage.getItem("ContactID");
+    conID = !conID ? 1 : (parseInt(conID) + 1).toString();
+    localStorage.setItem("ContactID", conID);
+    return conID
+} 

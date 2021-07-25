@@ -2,14 +2,17 @@ let addressBookList;
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-        getAddressBookDataFromStorage();
-        createInnerHtml();
+        if(site_properties.use_local_storage.match("true")){
+            getAddressBookDataFromStorage();
+        }else{
+            getAddressBookDataFromServer();
+        }
 
 })
 
 const getAddressBookDataFromStorage = () => {
     addressBookList = localStorage.getItem('AddressBookList') ?
-        JSON.parse(localStorage.getItem('AddressBookList')) : [];
+                    JSON.parse(localStorage.getItem('AddressBookList')) : [];
 
     processAddressBookDataResponse();
 }
@@ -17,6 +20,19 @@ const getAddressBookDataFromStorage = () => {
 const processAddressBookDataResponse = () => {
     document.querySelector(".person-count").textContent = addressBookList.length;
     createInnerHtml();
+}
+
+const getAddressBookDataFromServer = () => {
+    makeServiceCall("GET", site_properties.server_url, true)
+        .then(responseText => {
+            addressBookList = JSON.parse(responseText);
+            processAddressBookDataResponse();
+        })
+        .catch(error => {
+            console.log("Get Error Status: " + JSON.stringify(error))
+            addressBookList = [];
+            processAddressBookDataResponse();
+        });
 }
 
 const createInnerHtml = () => {
@@ -43,8 +59,8 @@ const createInnerHtml = () => {
                 <td>${addressBookData._zip}</td>
                 <td>${addressBookData._phone}</td>
                 <td>
-                    <img id="${addressBookData._id}" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                    <img id="${addressBookData._id}" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
+                    <img id="${addressBookData.id}" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    <img id="${addressBookData.id}" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
                 </td>
             </tr>
         `;
@@ -53,7 +69,7 @@ const createInnerHtml = () => {
 }
 
 const remove = (node) => {
-    addressBookList = addressBookList.filter(person => person._id != node.id);
+    addressBookList = addressBookList.filter(person => person.id != node.id);
     storeDataToLocalStorage();
     processAddressBookDataResponse();
 }

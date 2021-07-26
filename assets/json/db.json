@@ -12,7 +12,7 @@
     {
       "id": 2,
       "_name": "Mohit Garg",
-      "_address": "flat no xyz, sector xyz",
+      "_address": "flat no xyz, sector xyz, Updated",
       "_city": "Gurugram",
       "_state": "Haryana",
       "_zip": "996331",
@@ -35,6 +35,24 @@
       "_zip": "78797",
       "_phone": "7357383879",
       "id": 4
+    },
+    {
+      "_name": "Terisha",
+      "_address": "xzy building, street no",
+      "_city": "Mumbai",
+      "_state": "Karnataka",
+      "_zip": "76364",
+      "_phone": "2654631446",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "_name": "Himanshu",
+      "_address": "Flat no 101, savitry complex, Updated",
+      "_city": "Gurugram",
+      "_state": "Haryana",
+      "_zip": "55348",
+      "_phone": "+919862125648"
     }
   ]
 }

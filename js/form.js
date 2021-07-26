@@ -1,5 +1,6 @@
 let isUpdate = false;
 let addressBookObj = {};
+let contactId;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector('#name');
@@ -45,7 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
     setStatesInnerHtml();
-    // checkForUpdate();
+    checkForUpdate();
 })
 
 
@@ -57,14 +58,7 @@ function save(event) {
         if(site_properties.use_local_storage.match("true")){
             createAndUpdateStorage();
         }else {
-            makeServiceCall("POST", site_properties.server_url, true, addressBookObj)
-            .then(responseText => {
-                console.log("New Contact Added:" + responseText);
-                location.href = '../pages/home.html';
-            })
-            .catch(error => {
-                console.log(`${methodType} Error status:` + JSON.stringify(error));
-            });
+            createAndUpdateServer();
         }
         resetForm();
     } catch (e) {
@@ -159,9 +153,23 @@ let stateList = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chha
 
 
 const checkForUpdate = () => {
-    const contactId = new URLSearchParams(window.location.search).get('id');
-    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
-    const addressBookJson = addressBookList.find(personData => personData.id == contactId);
+    contactId = new URLSearchParams(window.location.search).get('id');
+    let addressBookJson;
+    if(site_properties.use_local_storage.match("true")){
+        let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
+        addressBookJson = addressBookList.find(personData => personData.id == contactId);
+    }else if (site_properties.use_local_storage.match("false")) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                addressBookJson = JSON.parse(xhr.responseText);
+            }
+        };
+        xhr.open("GET", site_properties.server_url + "/" + contactId , false);
+        xhr.send();
+
+    }
+    
     isUpdate = addressBookJson ? true : false;
     if (!isUpdate) return;
     addressBookObj = addressBookJson;
@@ -177,9 +185,34 @@ const setForm = () => {
     setValues('#zipCode', addressBookObj._zip);
 }
 
+function createAndUpdateServer() {
+    let methodType;
+    if(isUpdate){
+        makeServiceCall("PUT", site_properties.server_url+contactId, true, addressBookObj)
+        .then(responseText => {
+            console.log("New Contact Added:" + responseText);
+            location.href = '../pages/home.html';
+        })
+        .catch(error => {
+            console.log(`${methodType} Error status:` + JSON.stringify(error));
+        });
+    }else{
+        makeServiceCall("POST", site_properties.server_url, true, addressBookObj)
+        .then(responseText => {
+            console.log("New Contact Added:" + responseText);
+            location.href = '../pages/home.html';
+        })
+        .catch(error => {
+            console.log(`${methodType} Error status:` + JSON.stringify(error));
+        });
+    }
+}
+
 const setAddressBookObject = () => {
     if (!isUpdate && site_properties.use_local_storage.match("true")) {
         addressBookObj.id = createNewContactId();
+    }else if  (!isUpdate && site_properties.use_local_storage.match("false")){
+        addressBookObj.id = contactId;
     }
     addressBookObj._name = getInputValueById('#name');
     addressBookObj._address = getInputValueById('#address');

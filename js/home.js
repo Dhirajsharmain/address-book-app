@@ -69,9 +69,21 @@ const createInnerHtml = () => {
 }
 
 const remove = (node) => {
-    addressBookList = addressBookList.filter(person => person.id != node.id);
-    storeDataToLocalStorage();
-    processAddressBookDataResponse();
+    if (site_properties.use_local_storage.match("true")) {
+        addressBookList = addressBookList.filter(person => person.id != node.id);
+        storeDataToLocalStorage();
+        processAddressBookDataResponse();
+    }else{
+        makeServiceCall("DELETE", site_properties.server_url + node.id, true)
+        .then(responseText => {
+            console.log("Contact Deleted:" + responseText);
+        })
+        .catch(error => {
+            console.log(`${methodType} Error status:` + JSON.stringify(error));
+        });
+
+        processAddressBookDataResponse();
+    }
 }
 
 const storeDataToLocalStorage = () => {

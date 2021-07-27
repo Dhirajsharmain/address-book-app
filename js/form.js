@@ -159,15 +159,16 @@ const checkForUpdate = () => {
         let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
         addressBookJson = addressBookList.find(personData => personData.id == contactId);
     }else if (site_properties.use_local_storage.match("false")) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                addressBookJson = JSON.parse(xhr.responseText);
-            }
-        };
-        xhr.open("GET", site_properties.server_url + "/" + contactId , false);
-        xhr.send();
-
+        if(contactId){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    addressBookJson = JSON.parse(xhr.responseText);
+                }
+            };
+            xhr.open("GET", site_properties.server_url + contactId , false);
+            xhr.send();
+        }
     }
     
     isUpdate = addressBookJson ? true : false;

@@ -3,25 +3,16 @@
     {
       "id": 1,
       "_name": "Rajat kumar",
-      "_address": "flat no xyz, sector xyz",
+      "_address": "flat no xyz, sector xyz, new",
       "_city": "Hisar",
       "_state": "Haryana",
       "_zip": "996331",
       "_phone": "91 5654232353"
     },
     {
-      "id": 2,
-      "_name": "Mohit Garg",
-      "_address": "flat no xyz, sector xyz, Updated",
-      "_city": "Gurugram",
-      "_state": "Haryana",
-      "_zip": "996331",
-      "_phone": "91 5654232353"
-    },
-    {
       "id": 3,
-      "_name": "Prateek kumar",
-      "_address": "flat no xyz, sector xyz",
+      "_name": "Prateek Gupta",
+      "_address": "flat no xyz, sector xyz, updated",
       "_city": "Gurugram",
       "_state": "Haryana",
       "_zip": "996331",
@@ -44,6 +35,33 @@
       "_zip": "76364",
       "_phone": "2654631446",
       "id": 5
+    },
+    {
+      "id": 6,
+      "_name": "Himanshu",
+      "_address": "Flat no 101, savitry complex",
+      "_city": "Gurugram",
+      "_state": "Haryana",
+      "_zip": "55348",
+      "_phone": "+919862125648"
+    },
+    {
+      "id": 7,
+      "_name": "Anoop",
+      "_address": "new address, house no",
+      "_city": "Delhi",
+      "_state": "Delhi",
+      "_zip": "893166",
+      "_phone": "+918955622315"
+    },
+    {
+      "id": 8,
+      "_name": "Aditya",
+      "_address": "new address, house no",
+      "_city": "Hisar",
+      "_state": "Arunachal Pradesh",
+      "_zip": "78797",
+      "_phone": "7357383879"
     }
   ]
 }
